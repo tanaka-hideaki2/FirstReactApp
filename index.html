@@ -2,7 +2,7 @@
 <html lang ="ja">
   <head>
     <meta charset ="utf-8">
-    <title>初馬手のReact</title>
+    <title>初めてのReact</title>
     <link rel ="stylesheet" href ="./style.css">
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -11,6 +11,14 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
-    <script type ="text/babel"></script>
+    <div id="root"></div>
+    <script type ="text/babel">
+      (() => {
+        ReactDOM.render(
+          <p>Hello!</p>,
+          document.getElementById('root')
+        );
+      })();
+    </script>
   </body>
 </html>
