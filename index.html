@@ -15,7 +15,16 @@
     <script type ="text/babel">
       (() => {
 
+        function Counter(props) {
+          return <div>0{props.color}</div>;
+        }
+
         ReactDOM.render(
+          <div>
+            <Counter color="tomato"/>
+            <Counter color ="skyblue"/>
+            <Counter color ="purple"/>
+          </div>,
           document.getElementById('root')
         );
       })();
