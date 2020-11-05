@@ -14,17 +14,22 @@
     <div id="root"></div>
     <script type ="text/babel">
       (() => {
-
         // function Counter(props) {
         //   // console.log(props);
         //   return <li style={{backgroundColor:props.color}}>0</li>;
         // }
 
         class Counter extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              count: 10
+            };
+          }
           render() {
             return (
               <li style={{backgroundColor:this.props.color}}>
-                0
+                {this.state.count}
               </li>
             );
           }
