@@ -17,7 +17,16 @@
 
         function Counter(props) {
           // console.log(props);
-          return <li style={{backgroundColor:props.color}}>0{props.color}</li>;
+
+          function countUp(color) {
+            alert(color);
+          }
+
+          return (
+            <li style={{backgroundColor:props.color}} onClick ={() => {countUp(props.color)}}>
+              0{props.color}
+            </li>
+          );
         }
 
         ReactDOM.render(
