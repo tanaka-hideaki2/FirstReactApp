@@ -14,11 +14,6 @@
     <div id="root"></div>
     <script type ="text/babel">
       (() => {
-        // function Counter(props) {
-        //   // console.log(props);
-        //   return <li style={{backgroundColor:props.color}}>0</li>;
-        // }
-
         function Counter(props) {
           return (
               <li style={{backgroundColor:props.counter.color}} onClick={()=> 
@@ -28,23 +23,23 @@
             );
           }
 
-          function CounterList(props) {
-            console.log(props);
-            const counters = props.counters.map(counter => {
-              return (
-                <Counter
-                  counter={counter}
-                  key= {counter.id}
-                  countUp={props.countUp}
-                />
-              )
-            }) 
-            return(
-              <ul>
-                {counters}
-              </ul>
+        function CounterList(props) {
+          // console.log(props);
+          const counters = props.counters.map(counter => {
+            return (
+              <Counter
+                counter={counter}
+                key= {counter.id}
+                countUp={props.countUp}
+              />
             )
-          }
+          }) 
+          return(
+            <ul>
+              {counters}
+            </ul>
+          )
+        }
 
         class App extends React.Component {
           constructor() {
@@ -60,9 +55,29 @@
           }
 
           countUp(counter) {
+            console.log('counter:',counter);
+            // counterを全て(今回は3つ)取得し、クリックされたものに１足して全てのカウンターを返すという流れ。
 
+            //Reactを安全に動作させるため一旦countersのコピーを作成
+            this.setState(prevState => {
+              const counters = prevState.counters.map(counter => {
+                return {id: counter.id, count:counter.count, color: counter.color}
+              });
+              console.log('counters:',counters);
+              //pos(position)は何番目のカウンターがクリックされたか。countUp処理を行うか指定するために使う
+              const pos = counters.map(counter => {
+                return counter.id}).indexOf(counter.id);
+
+              console.log('pos:',pos);
+              counters[pos].count++;
+
+                //全てのcounter要素を返す
+              return {
+                counters: counters
+              };
+            });
           }
-          
+
           render() {
             return(
               <div className="container">
