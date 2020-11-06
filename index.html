@@ -18,7 +18,7 @@
           return (
               <li style={{backgroundColor:props.counter.color}} onClick={()=> 
               props.countUp(props.counter)}>
-                {props.counter.id}:{props.counter.count}
+                {props.counter.id}-({props.counter.count})
               </li>
             );
           }
@@ -49,6 +49,8 @@
                 {id: 'A', count: 0, color: 'tomato'},
                 {id: 'B', count: 0, color: 'skyblue'},
                 {id: 'C', count: 0, color: 'purple'},
+                {id: 'D', count: 0, color: 'green'},
+                {id: 'E', count: 0, color: 'yellow'},
               ],
               total: 0
             }
